@@ -25,6 +25,7 @@ with open('emb_dict.json','r') as jsonfile:
 def process(inPath,outPath):
   gender_list=['M','F']
   input_df=pd.read_csv(inPath)
+  input_df['name']=input_df['name'].apply(lambda x : x.lower())
   name_list=input_df['name'].to_list()
   h_0=torch.zeros((2,len(name_list),128))
   c_0=torch.zeros((2,len(name_list),128))
